@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Mandelbrot (via PyScript)</title>
+
+    <!-- Load PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2em;
+            background-color: #f4f4f4;
+        }
+        #plot-output {
+            margin-top: 1em;
+            border: 1px solid #ccc;
+            min-height: 400px; /* Placeholder size */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+        #status {
+            margin-top: 1em;
+            font-style: italic;
+            color: #555;
+        }
+        py-script {
+            /* PyScript adds its own elements, sometimes hidden */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mandelbrot Set Explorer (via PyScript)</h1>
+    <p>
+        This page runs Python code directly in your browser using PyScript
+        to calculate and display the Mandelbrot set.
+    </p>
+    <p>
+        <strong>Note:</strong> Loading Python and libraries (NumPy, Matplotlib)
+        may take some time on the first visit. The original interactive features
+        (zoom, keys) are disabled in this browser version.
+    </p>
+
+    <!-- Status indicator -->
+    <div id="status">Initializing PyScript and loading Python environment...</div>
+
+    <!-- Target div for the Matplotlib plot -->
+    <div id="plot-output">
+        <!-- Plot will be rendered here by PyScript/Matplotlib -->
+        <p>Loading plot...</p>
+    </div>
+
+    <!-- PyScript Configuration: Specify Python packages -->
+    <py-config>
+        packages = [ "numpy", "matplotlib" ]
+        # You can add splashscreen configuration here if desired
+        # terminal = false # Hide the default REPL if you don't need it
+    </py-config>
+
+    <!-- Execute the Python script -->
+    <!-- Make sure main.py is in the same directory as this HTML file -->
+    <py-script src="./main.py">
+    </py-script>
+
+    <hr>
+    <p><small>Powered by <a href="https://pyscript.net/" target="_blank">PyScript</a>.</small></p>
+
+</body>
+</html>
